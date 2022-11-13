@@ -9,16 +9,16 @@
     default_container_command: run
 
   tasks:
-    - name: Pull wallarm
-      community.docker.docker_image:
-        name: "{{default_container_image}}"
-        source: pull
-          platform: "https://hub.docker.com/r/wallarm/node"
+  - name: Pull wallarm
+    community.docker.docker_image:
+      name: "{{default_container_image}}"
+      source: pull
+      platform: "{{https://hub.docker.com/r/wallarm/node}}"
 
-    - name: Create default container
-      community.docker.docker_container:
-        name: "{{default_container_name}}{{item}}"
-        image: "{{default_container_image}}"
-        command: "{{default_container_command}}"
-        state: present
-      with_sequence: count={{container_count}}
+  - name: Create default container
+    community.docker.docker_container:
+      name: "{{default_container_name}}{{item}}"
+      image: "{{default_container_image}}"
+      command: "{{default_container_command}}"
+      state: present
+    with_sequence: count={{container_count}}
