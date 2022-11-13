@@ -1,0 +1,34 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+    - name: Install aptitude
+      apt:
+        name: aptitude
+        state: latest
+        update_cache: true
+
+    - name: install required system packages
+      apt:
+        pkg:
+          - apt-ransport-https
+          - ca-cecrtificates
+          - curl
+          - software-properties-common
+          - python3-pip
+          - virtualenv
+          - python3-setuptools
+        status: latest
+        update_cache: true
+    - name: pull busybox
+      include_role:
+        name: busybox
+
+    - name: pull lacework
+      include_role:
+        name: lacework
+
+    - name: pull wallarm
+      include_role:
+        name: wallarm
