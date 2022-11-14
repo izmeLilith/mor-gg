@@ -1,2 +1,7 @@
 ---
 # vars file for wallarm
+container:
+ container_counter: 1
+ default_container_name: wallarm
+ default_container_image: wallarm/node
+ default_container_command: run

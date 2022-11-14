@@ -1,2 +1,7 @@
 ---
 # vars file for lacework
+container:
+ container_counter: 1
+ default_container_name: lacework
+ default_container_image: lacework/datacollector
+ default_container_command: run
